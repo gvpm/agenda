@@ -1,12 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Login Web</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+      <h:form id="formLogin">
+        <h1><h:outputText id="bemVindo" value="Bem vindo(a) ao sistema."/></h1>
+        <h:panelGrid id="gridLoginSenha" columns="2">
+          <h:outputText id="loginLabel" value="Login:"/>
+          <h:inputText id="login" value="#{loginMB.usuario.login}"/>
+
+          <h:outputText id="senhaLabel" value="Senha:"/>
+          <h:inputSecret id="senha" value="#{loginMB.usuario.senha}"/>
+        </h:panelGrid>
+        <h:commandButton id="botao" value="Entrar" action="#{loginMB.doEfetuarLogin}"/>
+      </h:form>
     </h:body>
 </html>
-
