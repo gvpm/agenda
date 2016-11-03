@@ -12,12 +12,14 @@ package managedbeans;
   @ViewScoped
   public class LoginManagedBean {
    
-        private UsuarioDAO usuarioDAO = new UsuarioDAO();
+        private UsuarioDAO usuarioDAO = UsuarioDAO.getInstance();
         private Usuario usuario = new Usuario();
         
         public String envia() {
               
               
+            System.out.println(usuario.getLogin());
+            System.out.println(usuario.getSenha());
               usuario = usuarioDAO.getUsuario(usuario.getLogin(), usuario.getSenha());
               if (usuario == null) {
                     usuario = new Usuario();
