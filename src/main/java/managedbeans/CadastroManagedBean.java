@@ -9,6 +9,8 @@ import db.UsuarioDAO;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import model.Usuario;
 
@@ -16,13 +18,14 @@ import model.Usuario;
  *
  * @author gvpm
  */
-@Named(value = "CadastroMB")
-@Dependent
+@ManagedBean(name = "CadastroMB")
+@ViewScoped
 public class CadastroManagedBean {
 
     /**
      * Creates a new instance of CadastroManagedBean
-     */
+     */    
+    
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
     private Usuario usuario = new Usuario();
     
