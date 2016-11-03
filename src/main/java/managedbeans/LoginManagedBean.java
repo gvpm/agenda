@@ -17,6 +17,7 @@ package managedbeans;
         
         public String envia() {
               
+              
               usuario = usuarioDAO.getUsuario(usuario.getLogin(), usuario.getSenha());
               if (usuario == null) {
                     usuario = new Usuario();

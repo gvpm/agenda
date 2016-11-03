@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
@@ -9,18 +9,22 @@
     <h:body>
       <h:form id="formLogin">
        <h1><h:outputText id="bemVindo" value="Bem vindo(a) ao sistema."/></h1>
-        <h:panelGrid id="gridLoginSenha" columns="2">
+        <h:panelGrid id="gridLoginSenha" columns="3">
+           <h:outputText id="nomeText" value="Nome:"/>
+          <h:inputSecret id="nome" label="Nome"
+            value="#{CadastroMB.usuario.nome}" required="true"/>
+            
           <h:outputText id="loginText" value="Login:"/>
           <h:inputText id="login" label="Login"
-            value="#{LoginMB.usuario.login}" required="true"/>
+            value="#{CadastroMB.usuario.login}" required="true"/>
 
           <h:outputText id="senhaText" value="Senha:"/>
           <h:inputSecret id="senha" label="Senha"
-            value="#{LoginMB.usuario.senha}" required="true"/>
+            value="#{CadastroMB.usuario.senha}" required="true"/>          
+          
         </h:panelGrid>
         <h:messages id="msgErro" style="color: red"/>
-        <h:commandButton id="botao" value="Entrar" action="#{LoginMB.envia}"/>
+        <h:commandButton id="botao" value="Cadastrar" action="#{CadastroMB.envia}"/>
       </h:form>
-        <a href="cadastro.xhtml">Cadastrar</a>
     </h:body>
 </html>
