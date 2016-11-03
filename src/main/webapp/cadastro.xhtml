@@ -7,20 +7,21 @@
         <title></title>
     </h:head>
     <h:body>
-      <h:form id="formLogin">
+      <h:form id="formCadastro">
        <h1><h:outputText id="bemVindo" value="Bem vindo(a) ao sistema."/></h1>
-        <h:panelGrid id="gridLoginSenha" columns="3">
-           <h:outputText id="nomeText" value="Nome:"/>
+        <h:panelGrid columns="3">
+            
+          <h:outputText id="nomeText" value="Nome:"/>
           <h:inputSecret id="nome" label="Nome"
-            value="#{CadastroMB.usuario.nome}" required="true"/>
+          value="#{CadastroMB.usuario.nome}" required="true"/>
             
           <h:outputText id="loginText" value="Login:"/>
           <h:inputText id="login" label="Login"
-            value="#{CadastroMB.usuario.login}" required="true"/>
+          value="#{CadastroMB.usuario.login}" required="true"/>
 
           <h:outputText id="senhaText" value="Senha:"/>
           <h:inputSecret id="senha" label="Senha"
-            value="#{CadastroMB.usuario.senha}" required="true"/>          
+          value="#{CadastroMB.usuario.senha}" required="true"/>          
           
         </h:panelGrid>
         <h:messages id="msgErro" style="color: red"/>

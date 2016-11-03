@@ -8,10 +8,24 @@ package db;
   import model.Usuario;
    
   public class UsuarioDAO {
-   
+        private static UsuarioDAO instance;     
+  
         private EntityManagerFactory factory = Persistence
                     .createEntityManagerFactory("usuarios");
         private EntityManager em = factory.createEntityManager();
+        
+        private UsuarioDAO(){
+            
+        }
+        
+        public static UsuarioDAO getInstance(){
+            
+            if(instance==null){
+                instance = new UsuarioDAO();
+            }
+            return instance;
+        
+        }
    
         public Usuario getUsuario(String login, String senha) {
    
@@ -30,7 +44,9 @@ package db;
    
       public boolean inserirUsuario(Usuario usuario) {
               try {
+                    em.getTransaction().begin();
                     em.persist(usuario);
+                    em.getTransaction().commit();
                     return true;
               } catch (Exception e) {
                     e.printStackTrace();

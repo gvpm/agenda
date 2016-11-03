@@ -24,14 +24,15 @@ public class CadastroManagedBean {
 
     /**
      * Creates a new instance of CadastroManagedBean
-     */    
-    
-    private UsuarioDAO usuarioDAO = new UsuarioDAO();
+     */
+    private UsuarioDAO usuarioDAO = UsuarioDAO.getInstance();
     private Usuario usuario = new Usuario();
     
     public String envia() {
         
-         
+         System.out.println(usuario.getNome());
+         System.out.println(usuario.getLogin());
+         System.out.println(usuario.getSenha());
          boolean inseriu = usuarioDAO.inserirUsuario(usuario);
               
                   if (!inseriu) {
