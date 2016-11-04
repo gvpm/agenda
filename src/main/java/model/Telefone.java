@@ -157,5 +157,5 @@ public class Telefone implements Serializable {
     public String toString() {
         return "model.Telefone[ idtelefone=" + idtelefone + " ]";
     }
-    
+
 }

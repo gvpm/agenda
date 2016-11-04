@@ -141,5 +141,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "model.Usuario[ idusuario=" + idusuario + " ]";
     }
-    
+
 }

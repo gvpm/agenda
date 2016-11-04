@@ -155,5 +155,5 @@ public class Endereco implements Serializable {
     public String toString() {
         return "model.Endereco[ idendereco=" + idendereco + " ]";
     }
-    
+
 }

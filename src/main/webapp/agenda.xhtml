@@ -1,12 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Contatos</title>
+        <title>Agenda</title>
+        <h:body>
+
+            <!--            Retorna bem vindo se  a pessoa estiver logada ou um aviso se nao.-->
+            #{AgendaMB.loga}
+            <br></br>
+
+            <a href="index.xhtml">Voltar ao Login</a>
+
+
+        </h:body>
     </h:head>
-    <h:body>
-        TODO: implementar busca de contatos na agenda de contatos        
-    </h:body>
+
+
+
 </html>
 

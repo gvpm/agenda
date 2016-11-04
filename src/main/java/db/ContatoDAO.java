@@ -4,16 +4,17 @@
  * and open the template in the editor.
  */
 package db;
-  import javax.persistence.EntityManager;
-  import javax.persistence.EntityManagerFactory;
-  import javax.persistence.NoResultException;
-  import javax.persistence.Persistence;
-  import model.Contato;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
+import javax.persistence.Persistence;
+import model.Contato;
 
 /**
  *
  * @author gvpm
  */
 public class ContatoDAO {
-    
+
 }

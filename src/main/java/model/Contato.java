@@ -148,5 +148,5 @@ public class Contato implements Serializable {
     public String toString() {
         return "model.Contato[ idcontato=" + idcontato + " ]";
     }
-    
+
 }
