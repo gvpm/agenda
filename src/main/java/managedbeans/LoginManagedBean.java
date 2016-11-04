@@ -35,7 +35,7 @@ public class LoginManagedBean {
             Map<String, Object> sessionMap = externalContext.getSessionMap();
             sessionMap.put("idUsuario", usuario.getIdusuario());
 
-            return "agenda.xhtml";
+            return "agendaFace.xhtml";
         }
 
     }
