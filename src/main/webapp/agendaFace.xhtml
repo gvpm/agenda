@@ -10,6 +10,24 @@
             <!--            Retorna bem vindo se  a pessoa estiver logada ou um aviso se nao.-->
             #{AgendaMB.loga}
             <br></br>
+            
+             <h:form id="formCadastro">
+            <h:outputText id="bemVindo" value="Cadastrar Usuário"/>
+            <h:panelGrid columns="2">
+
+                <h:outputText id="nomeText" value="Nome:"/>
+                <h:inputText id="nome" label="Nome"
+                             value="#{AgendaMB.contato.nome}" required="true"/>
+
+                <h:outputText id="loginText" value="Email:"/>
+                <h:inputText id="login" label="Email"
+                             value="#{AgendaMB.contato.email}" required="false"/>                      
+
+            </h:panelGrid>
+            <h:messages id="msgErro" style="color: red"/>
+            <h:commandButton id="botao" value="Cadastrar" action="#{AgendaMB.cadastra}"/>
+        </h:form>
+
 
             <a href="index.xhtml">Voltar ao Login</a>
 
