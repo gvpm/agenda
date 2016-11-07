@@ -1,9 +1,15 @@
 package db;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import javax.websocket.Session;
+
+import org.hibernate.Hibernate;
 
 import model.Contato;
 
@@ -12,7 +18,7 @@ public class ContatoDAO {
     private static ContatoDAO instance;
 
     private EntityManagerFactory factory = Persistence
-            .createEntityManagerFactory("contatos");
+            .createEntityManagerFactory("usuarios");
     private EntityManager em = factory.createEntityManager();
 
     private ContatoDAO() {
@@ -27,7 +33,12 @@ public class ContatoDAO {
         return instance;
 
     }
-
+    @SuppressWarnings("unchecked")
+	public List<Contato> getContatosUsuario(int idusuario){
+    	System.out.println(idusuario);
+		List<Contato> result = em.createQuery("SELECT c FROM Contato c WHERE c.idusuario.id = :idusuario",model.Contato.class).setParameter("idusuario", idusuario).getResultList();
+    	return result;    	    	   
+    }
     public Contato getContato(String login, String senha) {
 
         try {

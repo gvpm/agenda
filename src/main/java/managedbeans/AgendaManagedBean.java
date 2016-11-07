@@ -7,10 +7,16 @@ package managedbeans;
 
 import db.*;
 import model.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import javax.inject.Named;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -19,8 +25,8 @@ import javax.faces.context.FacesContext;
  *
  * @author gvpm
  */
-@Named(value = "AgendaMB")
-@Dependent
+@ManagedBean(name = "AgendaMB")
+@ViewScoped
 public class AgendaManagedBean {
 
     private UsuarioDAO usuarioDAO = UsuarioDAO.getInstance();
@@ -29,17 +35,35 @@ public class AgendaManagedBean {
     
     private ContatoDAO contatoDAO = ContatoDAO.getInstance();
     private Contato contato = new Contato();
+    private List<Contato> contatosUsuario;
     int idUsuario;
     
-
+    @PostConstruct
+    public void init(){    	
+    	ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        Map<String, Object> sessionMap = externalContext.getSessionMap();
+        
+        if (sessionMap.get("idUsuario") != null) {
+            idUsuario = (int) sessionMap.get("idUsuario");
+        } else {
+            idUsuario = -1;
+        }
+        if(idUsuario>=0)
+        	contatosUsuario = contatoDAO.getContatosUsuario(idUsuario);
+    	
+    }
     /**
      * Creates a new instance of AgendaManagedBean
      *
      * @return
      */
     //executado no inicio e verifica o id do usuario da session
+    public List<Contato> getList() {
+        return this.contatosUsuario;
+    }
+    
+    
     public String getLoga() {
-        System.out.println("ioioioio");
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         Map<String, Object> sessionMap = externalContext.getSessionMap();
         
@@ -66,7 +90,10 @@ public class AgendaManagedBean {
         }
 
     }
-    
+    	public void deleteContato(){
+    	    //TODO:Delete contato
+    		
+    	}
         public String cadastra() {
             
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
@@ -77,10 +104,10 @@ public class AgendaManagedBean {
         } else {
             idUsuario = -1;
         }    
-
+        System.out.println("nome "+contato.getNome());
         contato.setIdusuario(usuarioDAO.getUsuarioFromId(idUsuario));
-            System.out.println("nome"+contato.getNome());
-            System.out.println("email"+contato.getEmail());
+        System.out.println("nome "+contato.getNome());
+        System.out.println("email "+contato.getEmail());
         boolean inseriu = contatoDAO.inserirContato(contato);
 
         if (!inseriu) {
